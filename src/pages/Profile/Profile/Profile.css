@@ -1,0 +1,10 @@
+.profile {
+    display: flex;
+    justify-content: center;
+}
+.profileAva {
+    width: 30%;
+}
+.profileTable {
+    width: 70%;
+}
