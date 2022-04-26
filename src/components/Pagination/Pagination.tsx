@@ -5,10 +5,10 @@ export type PaginatPropsType = {
     count: number
 }
 const Paginat = (props: PaginatPropsType) => {
-    const count = Math.ceil(props.count / 4)
+    const counter = Math.ceil(props.count / 4)
     return (
         <div>
-            <Pagination count={count} variant="outlined"/>
+            <Pagination count={counter} variant="outlined"/>
         </div>
     );
 };

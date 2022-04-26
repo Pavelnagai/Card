@@ -3,6 +3,9 @@
     justify-content: center;
 }
 .profileAva {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 30%;
 }
 .profileTable {
