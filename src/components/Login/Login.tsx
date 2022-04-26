@@ -40,7 +40,7 @@ const Login = () => {
                     return errors;
                 }}
                 onSubmit={(values) => {
-                    dispatch(authTC(values.email, values.password));
+                    dispatch(authTC({email:values.email, password: values.password, rememberMe: false}));
                 }}>
                 {({isSubmitting}) => (
                     <Form>

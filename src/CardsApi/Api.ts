@@ -1,10 +1,7 @@
-import axios from "axios";
+import {instance} from "./instance";
 
 
-const instance = axios.create({
-    baseURL: "https://neko-back.herokuapp.com/2.0",
-    withCredentials: true,
-})
+
 
 export const cardsApi = {
     getCards() {
@@ -27,16 +24,6 @@ export const cardsApi = {
     }
 }
 
-export const AuthApi = {
-    login(email: string, password: string, rememberMe: boolean = false) {
-        return instance.post('auth/login', {email, password, rememberMe})
-    },
-    logOut() {
-        return instance.delete('/auth/me')
-    },
-}
-
-
 export type registerResponseType = {
     email: string
     password: string
@@ -46,7 +33,7 @@ export type UpdateUserResponseType = {
     updatedUser: any,
     error?: string
 }
-export type setCards = {
+export type GetCardsType = {
     packName?: string,
     min?: number
     sortPacks?: number
