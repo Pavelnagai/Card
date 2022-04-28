@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/cards-nya/static/css/main.237a8a99.css",
+    "main.js": "/cards-nya/static/js/main.e4350b09.js",
+    "index.html": "/cards-nya/index.html",
+    "main.237a8a99.css.map": "/cards-nya/static/css/main.237a8a99.css.map",
+    "main.e4350b09.js.map": "/cards-nya/static/js/main.e4350b09.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.237a8a99.css",
+    "static/js/main.e4350b09.js"
+  ]
+}
