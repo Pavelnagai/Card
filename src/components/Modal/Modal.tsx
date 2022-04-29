@@ -7,6 +7,7 @@ import Button from "@mui/material/Button/Button";
 type ModalWindowType = {
     title: string
     content: any
+    // titleButton: string
 }
 
 const ModalWindow = (props: ModalWindowType) => {
@@ -26,7 +27,7 @@ const ModalWindow = (props: ModalWindowType) => {
     const handleClose = () => setOpen(false);
     return (
         <div>
-            <Button onClick={handleOpen}>Open modal</Button>
+            <Button onClick={handleOpen}>{props.title}</Button>
             <Modal
                 open={open}
                 onClose={handleClose}

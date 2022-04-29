@@ -4,6 +4,7 @@ import {registerReducers} from "../reducers/registerReducers";
 import {profileReducer} from "../reducers/profileReducer";
 import {authReducer} from "../reducers/authReducer";
 import {cardReducer} from "../reducers/cardReducer";
+import {TypedUseSelectorHook, useSelector} from "react-redux";
 
 
 export const rootReducer = combineReducers({
@@ -14,5 +15,7 @@ export const rootReducer = combineReducers({
 })
 
 export const store = createStore(rootReducer, applyMiddleware(thunk))
+
+export const useAppSelector: TypedUseSelectorHook<rootReducerType> = useSelector
 
 export type rootReducerType = ReturnType<typeof rootReducer>

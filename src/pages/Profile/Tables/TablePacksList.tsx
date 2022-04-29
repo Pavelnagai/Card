@@ -1,10 +1,15 @@
 import React from 'react';
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import './TablePacksList.css'
 import Paginat from "../../../components/Pagination/Pagination";
+import {deleteCardTC} from "../../../redux/reducers/cardReducer";
 
 const TablePacksList = () => {
     const cards = useSelector<any, any>(state => state.card.state)
+    const dispatch = useDispatch()
+    const deleteCard = (id: any) => {
+        dispatch(deleteCardTC(id))
+    }
     return (
         <div>
             <table className="table">
@@ -20,10 +25,10 @@ const TablePacksList = () => {
                     <td>{el.cardsCount}</td>
                     <td>{el.updated}</td>
                     <td>{el.user_name}</td>
-                    <td>{<button>x</button>}</td>
+                    <td>{<button onClick={()=>{deleteCard(el._id)}}>x</button>}</td>
                 </tr>)}
             </table>
-            <Paginat count={cards?.cardPacksTotalCount}/>
+
         </div>
     );
 };

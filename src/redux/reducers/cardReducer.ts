@@ -1,5 +1,5 @@
 import {Dispatch} from "redux";
-import {cardsApi} from "../../CardsApi/Api";
+import {AddCardsType, cardsApi, CardsPackType} from "../../CardsApi/Api";
 
 export type CardType = {
     cardsCount: number
@@ -45,6 +45,11 @@ export const cardReducer = (state = initialState, action: ActionType) => {
             return {
                 state: action.payload.data
             }
+        case "ADD_CARD": {
+            return {
+               ...state, ...state.cardPacks, cardPacks: {...action.payload.data , ...state.cardPacks}
+            }
+        }
         default:
             return state
     }
@@ -56,12 +61,38 @@ export const getCardsAC = (data: InitialStateCardType) => ({
     }
 } as const)
 
+export const addCardAC = (data: CardType) => ({
+    type: "ADD_CARD",
+    payload: {
+        data
+    }
+} as const)
+type AddCardType = ReturnType<typeof addCardAC>
 type GetCardsType = ReturnType<typeof getCardsAC>
-type ActionType = GetCardsType
+type ActionType = GetCardsType | AddCardType
 
 export const getCards = () => async (dispatch: Dispatch) => {
     try {
         const res = await cardsApi.getCards()
+        dispatch(getCardsAC(res.data))
+    } catch (e) {
+
+    }
+}
+
+export const addCardsTC = (data: AddCardsType) => async (dispatch: Dispatch) => {
+    try {
+        const res = await cardsApi.addCards(data)
+
+        dispatch(addCardAC(res.data.newCardsPack))
+    } catch (e) {
+
+    }
+}
+
+export const deleteCardTC = (id: any) => async (dispatch: Dispatch) => {
+    try {
+        const res = await cardsApi.deleteCard(id)
         dispatch(getCardsAC(res.data))
     } catch (e) {
 

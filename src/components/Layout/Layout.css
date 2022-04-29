@@ -1,0 +1,29 @@
+.Layout {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 70px;
+    background-color: #ebe0e9;;
+}
+.Layout span {
+    position: absolute;
+    top: 0;
+    left: 100px;
+    padding: 15px;
+    font-size: 30px;
+    font-weight: bold;
+}
+.pack {
+    padding: 20px;
+    width: 60px;
+    color: #888
+}
+.layout_profile{
+    padding: 20px;
+    width: 60px;
+    color: #888
+}
+.active {
+    background-color: #DCCCDB;
+    border-bottom: 3px solid mediumblue;
+}

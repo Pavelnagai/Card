@@ -16,7 +16,7 @@ const Login = () => {
         navigate('/sing-up')
     }
     if (auth){
-        navigate('/profile');
+        navigate('/main');
     }
 
     return (
