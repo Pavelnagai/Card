@@ -16,14 +16,15 @@ const PacksList = () => {
     }
     return (
         <div>
-            {/*<ModalWindow*/}
-            {/*    title="Add Card"*/}
-            {/*    content={*/}
-            {/*        <div>*/}
-            {/*            <input onChange={onChange} type="text"/>*/}
-            {/*            <button onClick={() => addCard(value)}>Save</button>*/}
-            {/*        </div>}*/}
-            {/*/>*/}
+            <ModalWindow
+                title="Add Card"
+                content={
+                    <div>
+                        <input onChange={onChange} type="text"/>
+                        <button onClick={() => addCard(value)}>Save</button>
+                    </div>}
+                callbackButton={addCard}
+            />
 
         </div>
     );

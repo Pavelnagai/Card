@@ -2,15 +2,7 @@ import {instance} from "./instance";
 
 
 export const cardsApi = {
-    getCards() {
-        return instance.get('/cards/pack')
-    },
-    addCards(data: AddCardsType) {
-        return instance.post('/cards/pack', data)
-    },
-    deleteCard(id: any) {
-        return instance.delete('/cards/pack', {params: {id}})
-    },
+
     register(email: string, password: string) {
         return instance.post<registerResponseType>('/auth/register', {email, password})
     },

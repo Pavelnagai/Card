@@ -5,6 +5,7 @@ import CustomizedTables from "../../../components/TablesNew/TableMui";
 import Search from "../../../components/Search/Search";
 import ProfileAvatar from "./ProfileAvatar/ProfileAvatar";
 import DoubleSlider from "../../../components/Slider/Slider";
+import ModalWindow from "../../../components/Modal/Modal";
 
 type propsProfileType = {}
 const Profile = (props: propsProfileType) => {

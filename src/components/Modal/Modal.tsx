@@ -1,6 +1,6 @@
 import Box from '@mui/material/Box/Box';
 import Modal from '@mui/material/Modal/Modal';
-import React from 'react';
+import React, {useState} from 'react';
 import Button from "@mui/material/Button/Button";
 
 
@@ -8,6 +8,7 @@ type ModalWindowType = {
     title: string
     content: any
     // titleButton: string
+    callbackButton: (name: string) => void
 }
 
 const ModalWindow = (props: ModalWindowType) => {
@@ -22,6 +23,7 @@ const ModalWindow = (props: ModalWindowType) => {
         boxShadow: 24,
         p: 4,
     };
+    // const [value, setValue] = useState("")
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -37,9 +39,9 @@ const ModalWindow = (props: ModalWindowType) => {
                 <Box sx={style}>
                     <h3>{props.title}</h3>
                     <p>{props.content}</p>
-                    <button style={{backgroundColor: 'red'}} onClick={handleClose}>Close</button>
-                    <Button onClick={handleClose}>Cancel</Button>
-                    {/*<Button onClick={props.callback}>Cancel</Button>*/}
+                    <button style={{backgroundColor: 'red'}} onClick={handleClose}>Cancel</button>
+                    <button>{props.title}</button>
+
 
                 </Box>
             </Modal>

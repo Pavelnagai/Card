@@ -7,10 +7,11 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import button from "../Button/Button";
-import {deleteCardTC} from "../../redux/reducers/cardReducer";
+import {deleteCardTC, InitialStateCardType} from "../../redux/reducers/cardReducer";
 import Paginat from "../Pagination/Pagination";
+import {useAppSelector} from "../../redux/store/store";
 
 
 const StyledTableCell = styled(TableCell)(({theme}) => ({
@@ -33,16 +34,26 @@ const StyledTableRow = styled(TableRow)(({theme}) => ({
     },
 }));
 
-function createData(name: string, cards: any, lastUpdate: string, created: string, button: any) {
+function createData(name: string, cards: any, lastUpdate: string, created: string, button: any[]
+) {
     return {name, cards, lastUpdate, created, button};
 }
 
 export default function CustomizedTables() {
-    const cards = useSelector<any, any>(state => state.card.state)
+    const cards = useAppSelector<InitialStateCardType>(state => state.card)
+    const myId = useAppSelector<string>(state => state.auth.myId)
     const dispatch = useDispatch()
-    const rows = cards?.cardPacks.map((el: any) => createData(el.name, el.cardsCount, el.updated, el.user_name, <button
-        onClick={() => deleteCard(el._id)}>x</button>))
-    const deleteCard = (id: any) => {
+    const rows = cards?.cardPacks.map(el =>
+        createData(
+            el.name,
+            el.cardsCount,
+            el.updated,
+            el.user_name,
+            [<button>learn</button>,
+                myId === el.user_id ?
+                    [<button onClick={() => deleteCard(el._id)}>x</button>,
+                        <button>edit</button>] : null]))
+    const deleteCard = (id: string) => {
         dispatch(deleteCardTC(id))
     }
     return (

@@ -1,5 +1,6 @@
 import {Dispatch} from "redux";
-import {AddCardsType, cardsApi, CardsPackType} from "../../CardsApi/Api";
+import {AddCardsType} from "../../CardsApi/Api";
+import {CardAPI} from "../../CardsApi/CardAPI";
 
 export type CardType = {
     cardsCount: number
@@ -19,20 +20,20 @@ export type CardType = {
     _id: string
 }
 export type InitialStateCardType = {
-    cardPacks: CardType [] | null
-    cardPacksTotalCount: number | null
-    maxCardsCount: number | null
-    minCardsCount: number | null
+    cardPacks: CardType []
+    cardPacksTotalCount: number
+    maxCardsCount: number
+    minCardsCount: number
     page: number | null
     pageCount: number | null
     token: string | null
     tokenDeathTime: number | null
 }
 const initialState: InitialStateCardType = {
-    cardPacks: null,
-    cardPacksTotalCount: null,
-    maxCardsCount: null,
-    minCardsCount: null,
+    cardPacks: [],
+    cardPacksTotalCount: 0,
+    maxCardsCount: 0,
+    minCardsCount: 0,
     page: null,
     pageCount: null,
     token: null,
@@ -43,13 +44,16 @@ export const cardReducer = (state = initialState, action: ActionType) => {
     switch (action.type) {
         case "GET_CARDS":
             return {
-                state: action.payload.data
+                ...state,
+                cardPacks: action.payload.data.cardPacks,
+                cardPacksTotalCount: action.payload.data.cardPacksTotalCount,
+                maxCardsCount: action.payload.data.maxCardsCount,
+                minCardsCount: action.payload.data.minCardsCount,
+                page: action.payload.data.page,
+                pageCount: action.payload.data.pageCount,
+                token: action.payload.data.token,
+                tokenDeathTime: action.payload.data.tokenDeathTime
             }
-        case "ADD_CARD": {
-            return {
-               ...state, ...state.cardPacks, cardPacks: {...action.payload.data , ...state.cardPacks}
-            }
-        }
         default:
             return state
     }
@@ -61,39 +65,31 @@ export const getCardsAC = (data: InitialStateCardType) => ({
     }
 } as const)
 
-export const addCardAC = (data: CardType) => ({
-    type: "ADD_CARD",
-    payload: {
-        data
-    }
-} as const)
-type AddCardType = ReturnType<typeof addCardAC>
 type GetCardsType = ReturnType<typeof getCardsAC>
-type ActionType = GetCardsType | AddCardType
+type ActionType = GetCardsType
 
 export const getCards = () => async (dispatch: Dispatch) => {
     try {
-        const res = await cardsApi.getCards()
+        const res = await CardAPI.getCards()
         dispatch(getCardsAC(res.data))
     } catch (e) {
 
     }
 }
 
-export const addCardsTC = (data: AddCardsType) => async (dispatch: Dispatch) => {
+export const addCardsTC = (data: AddCardsType) => async (dispatch: any) => {
     try {
-        const res = await cardsApi.addCards(data)
-
-        dispatch(addCardAC(res.data.newCardsPack))
+        const res = await CardAPI.addCards(data)
+        dispatch(getCards())
     } catch (e) {
 
     }
 }
 
-export const deleteCardTC = (id: any) => async (dispatch: Dispatch) => {
+export const deleteCardTC = (id: any) => async (dispatch: any) => {
     try {
-        const res = await cardsApi.deleteCard(id)
-        dispatch(getCardsAC(res.data))
+        const res = await CardAPI.deleteCard(id)
+        dispatch(getCards())
     } catch (e) {
 
     }
