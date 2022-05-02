@@ -1,18 +1,20 @@
 import React, {useState} from 'react'
-import {NavLink,Outlet} from "react-router-dom";
-import './Layout.css'
-
+import {Outlet} from "react-router-dom";
+import './Layout.scss'
+import PersonIcon from '@mui/icons-material/Person';
+import ListAltIcon from '@mui/icons-material/ListAlt';
 
 export const Layout = () => {
     const [active, setActive] = useState<boolean>(false)
     return (
-        <div className="Layout">
+        <div className="layout">
             <span>Cards-Packs</span>
-            <div className={active ? "pack active" : 'pack'} onClick={()=>setActive(true)}>Pack List</div>
-            <div className={!active? 'layout_profile active' : "layout_profile"} onClick={()=>setActive(false)}>Profile</div>
-            {/*<NavLink style={{marginRight:'30px'}} to={'/sing-up'}>Sing Up</NavLink>*/}
-            {/*<NavLink style={{marginRight:'30px'}} to={'/login'}>login</NavLink>*/}
-            {/*<NavLink style={{marginRight:'30px'}} to={'/profile'}>profile</NavLink>*/}
+            <div className={active ? "pack active" : 'pack'} onClick={() => setActive(true)}>
+                <ListAltIcon/>Pack List
+            </div>
+            <div className={!active ? 'pack active' : "pack"} onClick={() => setActive(false)}>
+                <PersonIcon/>Profile
+            </div>
             <Outlet/>
         </div>
     )
