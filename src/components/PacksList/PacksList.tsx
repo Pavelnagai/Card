@@ -1,6 +1,4 @@
 import React, {useState} from 'react';
-import Search from "../Search/Search";
-import TablePacksList from "../../pages/Profile/Tables/TablePacksList";
 import ModalWindow from "../Modal/Modal";
 import {useDispatch} from "react-redux";
 import {addCardsTC} from "../../redux/reducers/cardReducer";
@@ -18,14 +16,10 @@ const PacksList = () => {
         <div>
             <ModalWindow
                 title="Add Card"
-                content={
-                    <div>
-                        <input onChange={onChange} type="text"/>
-                        <button onClick={() => addCard(value)}>Save</button>
-                    </div>}
+                content={<input onChange={onChange} type="text"/>}
                 callbackButton={addCard}
+                value={value}
             />
-
         </div>
     );
 };

@@ -7,8 +7,8 @@ import Button from "@mui/material/Button/Button";
 type ModalWindowType = {
     title: string
     content: any
-    // titleButton: string
     callbackButton: (name: string) => void
+    value: string
 }
 
 const ModalWindow = (props: ModalWindowType) => {
@@ -23,13 +23,17 @@ const ModalWindow = (props: ModalWindowType) => {
         boxShadow: 24,
         p: 4,
     };
-    // const [value, setValue] = useState("")
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    const add = () => {
+        props.callbackButton(props.value)
+        handleClose()
+    }
+
     return (
         <div>
-            <Button onClick={handleOpen}>{props.title}</Button>
+            <Button color='primary' variant={'contained'} onClick={handleOpen}>{props.title}</Button>
             <Modal
                 open={open}
                 onClose={handleClose}
@@ -40,7 +44,7 @@ const ModalWindow = (props: ModalWindowType) => {
                     <h3>{props.title}</h3>
                     <p>{props.content}</p>
                     <button style={{backgroundColor: 'red'}} onClick={handleClose}>Cancel</button>
-                    <button>{props.title}</button>
+                    <button onClick={add}>{props.title}</button>
 
 
                 </Box>

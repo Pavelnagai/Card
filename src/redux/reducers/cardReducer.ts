@@ -24,7 +24,7 @@ export type InitialStateCardType = {
     cardPacksTotalCount: number
     maxCardsCount: number
     minCardsCount: number
-    page: number | null
+    page: number
     pageCount: number | null
     token: string | null
     tokenDeathTime: number | null
@@ -34,7 +34,7 @@ const initialState: InitialStateCardType = {
     cardPacksTotalCount: 0,
     maxCardsCount: 0,
     minCardsCount: 0,
-    page: null,
+    page: 1,
     pageCount: null,
     token: null,
     tokenDeathTime: null,

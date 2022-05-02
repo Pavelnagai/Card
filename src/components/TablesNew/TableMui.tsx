@@ -12,7 +12,7 @@ import button from "../Button/Button";
 import {deleteCardTC, InitialStateCardType} from "../../redux/reducers/cardReducer";
 import Paginat from "../Pagination/Pagination";
 import {useAppSelector} from "../../redux/store/store";
-
+import  './TableMui.scss';
 
 const StyledTableCell = styled(TableCell)(({theme}) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -28,7 +28,6 @@ const StyledTableRow = styled(TableRow)(({theme}) => ({
     '&:nth-of-type(odd)': {
         backgroundColor: theme.palette.action.hover,
     },
-    // hide last border
     '&:last-child td, &:last-child th': {
         border: 0,
     },
@@ -57,6 +56,8 @@ export default function CustomizedTables() {
         dispatch(deleteCardTC(id))
     }
     return (
+        <div className='table'>
+
         <TableContainer component={Paper}>
             <Table aria-label="customized table">
                 <TableHead>
@@ -82,8 +83,8 @@ export default function CustomizedTables() {
                     ))}
                 </TableBody>
             </Table>
-            <Paginat count={cards?.cardPacksTotalCount}/>
         </TableContainer>
-
+        <Paginat count={cards?.cardPacksTotalCount }/>
+        </div>
     );
 }
