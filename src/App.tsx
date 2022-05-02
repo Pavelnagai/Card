@@ -31,7 +31,7 @@ function App() {
         }
     }, [auth])
     useEffect(() => {
-        dispatch(getCards())
+        dispatch(getCards({}))
     }, [])
     useEffect(() => {
         dispatch(isInitializedTC())

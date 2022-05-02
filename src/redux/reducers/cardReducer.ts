@@ -1,5 +1,5 @@
 import {Dispatch} from "redux";
-import {AddCardsType} from "../../CardsApi/Api";
+import {AddCardsType, GetCardsType} from "../../CardsApi/Api";
 import {CardAPI} from "../../CardsApi/CardAPI";
 
 export type CardType = {
@@ -65,13 +65,13 @@ export const getCardsAC = (data: InitialStateCardType) => ({
     }
 } as const)
 
-type GetCardsType = ReturnType<typeof getCardsAC>
-type ActionType = GetCardsType
+type GetCardsTypeAC = ReturnType<typeof getCardsAC>
+type ActionType = GetCardsTypeAC
 
-export const getCards = () => async (dispatch: Dispatch) => {
+export const getCards = (data: GetCardsType) => async (dispatch: Dispatch) => {
     try {
-        const res = await CardAPI.getCards()
-        dispatch(getCardsAC(res.data))
+            const res = await CardAPI.getCards(data)
+            dispatch(getCardsAC(res.data))
     } catch (e) {
 
     }
@@ -80,7 +80,7 @@ export const getCards = () => async (dispatch: Dispatch) => {
 export const addCardsTC = (data: AddCardsType) => async (dispatch: any) => {
     try {
         const res = await CardAPI.addCards(data)
-        dispatch(getCards())
+        dispatch(getCards({}))
     } catch (e) {
 
     }
@@ -89,7 +89,7 @@ export const addCardsTC = (data: AddCardsType) => async (dispatch: any) => {
 export const deleteCardTC = (id: any) => async (dispatch: any) => {
     try {
         const res = await CardAPI.deleteCard(id)
-        dispatch(getCards())
+        dispatch(getCards({}))
     } catch (e) {
 
     }

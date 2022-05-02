@@ -1,9 +1,10 @@
 import {instance} from "./instance";
-import {AddCardsType} from "./Api";
+import {AddCardsType, GetCardsType} from "./Api";
+
 
 export  const CardAPI = {
-    getCards() {
-        return instance.get('/cards/pack')
+    getCards(params?: GetCardsType ) {
+        return instance.get('/cards/pack', {params})
     },
     addCards(data: AddCardsType) {
         return instance.post('/cards/pack', data)
@@ -12,3 +13,7 @@ export  const CardAPI = {
         return instance.delete('/cards/pack', {params: {id}})
     },
 }
+
+
+
+

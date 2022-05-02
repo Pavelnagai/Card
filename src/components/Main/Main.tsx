@@ -8,7 +8,7 @@ import {getCards} from "../../redux/reducers/cardReducer";
 const Main = () => {
     const dispatch = useDispatch()
     useEffect(() => {
-        dispatch(getCards())
+        dispatch(getCards({}))
     }, [])
     return (
         <div className='main'>
