@@ -7,7 +7,7 @@ import {useAppSelector} from "../../redux/store/store";
 
 const DoubleSlider = () => {
     const [value, setValue] = React.useState<number[]>([0, 83]);
-    const maxCardsCount = useAppSelector<number>(state => state.card.maxCardsCount)
+    const maxCardsCount = useAppSelector<number>(state => state.pack.maxCardsCount)
 
     const handleChange = (event: Event, newValue: number | number[]) => {
         setValue(newValue as number[]);
@@ -20,7 +20,7 @@ const DoubleSlider = () => {
     return (
 
         <div className={style.slider}>
-            <Box sx={{width: 200}}>
+            <Box>
                 <Slider
                     getAriaLabel={() => 'Temperature range'}
                     value={value}

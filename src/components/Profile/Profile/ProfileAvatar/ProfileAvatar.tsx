@@ -2,6 +2,7 @@ import React from 'react';
 import {NavLink} from "react-router-dom";
 import {useSelector} from "react-redux";
 import "./ProfileAvatar.scss"
+import Button from "@mui/material/Button/Button";
 
 const ProfileAvatar = () => {
     const profile = useSelector<any, any>(state => state.profile)
@@ -9,9 +10,9 @@ const ProfileAvatar = () => {
         <div className="container">
             <img src={profile.avatar} alt="avatar"/>
             {profile.name}
-            <div>
-                <NavLink style={{marginRight: '30px'}} to={`/profile/information/`}>Information</NavLink>
-            </div>
+            <div>Front-end developer</div>
+            <NavLink style={{textDecoration: 'none'}} to={`/profile/information/`}><Button variant={'outlined'}>Edit
+                profile</Button></NavLink>
         </div>
     );
 };

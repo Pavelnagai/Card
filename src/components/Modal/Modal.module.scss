@@ -1,0 +1,54 @@
+@import "../../access/Scss/mixins";
+
+.boxStyle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  background: white;
+  border-radius: 3px;
+  box-shadow: dimgrey;
+
+  .title {
+
+    & ::before {
+      content: "";
+      position: absolute;
+      height: 1px;
+      width: 100%;
+      background: #d9d9f1;
+      top: 60px;
+      left: 0;
+    }
+  }
+
+  .content {
+    padding: 20px;
+
+    .containerButton {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 20px;
+
+      .button {
+        background: #b5b5e1;
+        color: #381cda;
+        width: 100px;
+        border-radius: 50px;
+      }
+
+      .buttonDelete {
+        background: red;
+        width: 100px;
+        border-radius: 50px;
+      }
+
+      .buttonSave {
+        @include saveButton;
+      }
+    }
+  }
+
+
+}

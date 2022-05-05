@@ -1,0 +1,29 @@
+@import "../../access/Scss/mixins";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  @include containerProfile;
+
+  .search {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 80%;
+  }
+
+  .containerContent {
+    display: flex;
+    justify-content: center;
+    .table {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      //align-items: center;
+      width: 80%;
+    }
+    .null {
+      margin: 15%;
+    }
+  }
+}

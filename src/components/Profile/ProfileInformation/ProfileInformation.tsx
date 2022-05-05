@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {useFormik} from "formik";
 import {updateNickNameTC} from "../../../redux/reducers/profileReducer";
+import style from "./ProfileInformation.module.scss";
 
 type FormikErrorType = {
     name?: string,
@@ -34,8 +35,11 @@ const ProfileInformation = () => {
     });
     return (
 
-        <div>
-            <h2>Personal Information</h2>
+        <div className={style.container}>
+            <div className={style.title}>
+                <h2>Personal Information</h2>
+            </div>
+
             <form onSubmit={formik.handleSubmit}>
                 <div>
                     <div>

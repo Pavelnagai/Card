@@ -1,0 +1,13 @@
+@mixin containerProfile (){
+  display: flex;
+  background: white;
+  border-radius: 15px;
+  margin: 20px 100px;
+  min-height: 83vh;
+}
+
+@mixin saveButton () {
+  width: 100px;
+  border-radius: 50px;
+  background: #381cda;
+}

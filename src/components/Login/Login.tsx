@@ -12,11 +12,11 @@ const Login = () => {
     const auth = useSelector<any, rootReducerType>(state => state.auth.isAuth);
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const redirectOnSingUp=()=>{
+    const redirectOnSingUp = () => {
         navigate('/sing-up')
     }
-    if (auth){
-        navigate('/main');
+    if (auth) {
+        navigate(`/main/${false}`);
     }
 
     return (
@@ -40,7 +40,7 @@ const Login = () => {
                     return errors;
                 }}
                 onSubmit={(values) => {
-                    dispatch(authTC({email:values.email, password: values.password, rememberMe: false}));
+                    dispatch(authTC({email: values.email, password: values.password, rememberMe: false}));
                 }}>
                 {({isSubmitting}) => (
                     <Form>
@@ -51,7 +51,7 @@ const Login = () => {
                         <div className={style.inputContainer}>
                             <Field className={style.input} type="email" name="email" autoComplete="username"/>
                             <ErrorMessage name="email" component="div"/>
-                            <Field className={style.input} type="text"  name="password"  autoComplete="current-password" />
+                            <Field className={style.input} type="text" name="password" autoComplete="current-password"/>
                             <ErrorMessage name="password" component="div"/>
                         </div>
                         <div className={style.forgotContainer}>
@@ -61,7 +61,7 @@ const Login = () => {
                             </div>
                             <Link to={'/recovery-pass'}>forgot password</Link>
                         </div>
-                        <Button type="submit"  disabled={isSubmitting} name="Sing In"/>
+                        <Button type="submit" disabled={isSubmitting} name="Sing In"/>
                         <div className={style.signUpContainer}>
                             <div>Don’t have an account?</div>
                             <Button callback={redirectOnSingUp} name={'Sing Up'}/>

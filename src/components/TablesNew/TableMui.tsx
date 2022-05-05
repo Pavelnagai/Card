@@ -9,10 +9,13 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import {useDispatch} from "react-redux";
 import button from "../Button/Button";
-import {deleteCardTC, InitialStateCardType} from "../../redux/reducers/cardReducer";
+import {deletePackTC, getPacks, InitialStatePackType} from "../../redux/reducers/packsReducer";
 import Paginat from "../Pagination/Pagination";
 import {useAppSelector} from "../../redux/store/store";
-import  './TableMui.scss';
+import './TableMui.scss';
+import {useNavigate} from "react-router-dom";
+import {useEffect} from "react";
+import ModalWindow from "../Modal/Modal";
 
 const StyledTableCell = styled(TableCell)(({theme}) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -33,58 +36,71 @@ const StyledTableRow = styled(TableRow)(({theme}) => ({
     },
 }));
 
-function createData(name: string, cards: any, lastUpdate: string, created: string, button: any[]
-) {
-    return {name, cards, lastUpdate, created, button};
+type TableType = {
+    active: boolean | undefined
+    activeDiv: boolean
 }
 
-export default function CustomizedTables() {
-    const cards = useAppSelector<InitialStateCardType>(state => state.card)
+export default function CustomizedTables(props: TableType) {
+    const cards = useAppSelector<InitialStatePackType>(state => state.pack)
     const myId = useAppSelector<string>(state => state.auth.myId)
+    const navigate = useNavigate()
     const dispatch = useDispatch()
-    const rows = cards?.cardPacks.map(el =>
-        createData(
-            el.name,
-            el.cardsCount,
-            el.updated,
-            el.user_name,
-            [<button>learn</button>,
-                myId === el.user_id ?
-                    [<button onClick={() => deleteCard(el._id)}>x</button>,
-                        <button>edit</button>] : null]))
     const deleteCard = (id: string) => {
-        dispatch(deleteCardTC(id))
+        dispatch(deletePackTC(id))
     }
+    const cardsTable = () => {
+        if (!props.active || props.activeDiv) {
+            dispatch(getPacks({user_id: myId}))
+        } else {
+            dispatch(getPacks({}))
+        }
+    }
+    useEffect(() => {
+        cardsTable()
+    }, [props.active, props.activeDiv])
     return (
         <div className='table'>
-
-        <TableContainer component={Paper}>
-            <Table aria-label="customized table">
-                <TableHead>
-                    <TableRow>
-                        <StyledTableCell>Name</StyledTableCell>
-                        <StyledTableCell align="right">Cards</StyledTableCell>
-                        <StyledTableCell align="right">Last Update</StyledTableCell>
-                        <StyledTableCell align="right">Created</StyledTableCell>
-                        <StyledTableCell align="right">Action</StyledTableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {rows.map((row: any) => (
-                        <StyledTableRow key={row.name}>
-                            <StyledTableCell component="th" scope="row">
-                                {row.name}
-                            </StyledTableCell>
-                            <StyledTableCell align="right">{row.cards}</StyledTableCell>
-                            <StyledTableCell align="right">{row.lastUpdate}</StyledTableCell>
-                            <StyledTableCell align="right">{row.created}</StyledTableCell>
-                            <StyledTableCell align="right">{row.button}</StyledTableCell>
-                        </StyledTableRow>
-                    ))}
-                </TableBody>
-            </Table>
-        </TableContainer>
-        <Paginat count={cards?.cardPacksTotalCount }/>
+            <TableContainer component={Paper}>
+                <Table aria-label="customized table">
+                    <TableHead>
+                        <TableRow>
+                            <StyledTableCell>Name</StyledTableCell>
+                            <StyledTableCell align="right">Cards</StyledTableCell>
+                            <StyledTableCell align="right">Last Update</StyledTableCell>
+                            <StyledTableCell align="right">Created</StyledTableCell>
+                            <StyledTableCell align="right">Action</StyledTableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {cards.cardPacks.map(el => (
+                            <StyledTableRow key={el.name}>
+                                <StyledTableCell component="th" scope="row">
+                                    {el.name}
+                                </StyledTableCell>
+                                <StyledTableCell align="right">{el.cardsCount}</StyledTableCell>
+                                <StyledTableCell align="right">{el.updated}</StyledTableCell>
+                                <StyledTableCell align="right">{el.user_name}</StyledTableCell>
+                                <StyledTableCell align="right">
+                                    {myId === el.user_id &&
+                                        <ModalWindow
+                                            title={"Delete"}
+                                            titleButton={'Delete'}
+                                            content={`Do yoy really want to remove Pack Name:${el.name}? All cards will 
+                                            be excludes from this course. `}
+                                            callbackButton={() => {
+                                                deleteCard(el._id)
+                                            }} value={"g"}/>
+                                    }
+                                    <button onClick={() => navigate(`/profile/pack/${el._id}`)}>Learn</button>
+                                </StyledTableCell>
+                            </StyledTableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            </TableContainer>
+            <Paginat count={cards?.cardPacksTotalCount}/>
         </div>
+
     );
 }

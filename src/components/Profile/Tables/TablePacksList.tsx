@@ -1,14 +1,14 @@
 import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import './TablePacksList.css'
-import Paginat from "../../../components/Pagination/Pagination";
-import {deleteCardTC} from "../../../redux/reducers/cardReducer";
+import Paginat from "../../Pagination/Pagination";
+import {deletePackTC} from "../../../redux/reducers/packsReducer";
 
 const TablePacksList = () => {
     const cards = useSelector<any, any>(state => state.card.state)
     const dispatch = useDispatch()
     const deleteCard = (id: any) => {
-        dispatch(deleteCardTC(id))
+        dispatch(deletePackTC(id))
     }
     return (
         <div>

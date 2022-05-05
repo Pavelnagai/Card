@@ -1,0 +1,23 @@
+#box {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  .boxContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 50px;
+    background-color: #f6f1f1;
+  }
+  .textField{
+    display: flex;
+    flex-direction: column;
+    margin: 10px 10px 70px 10px;
+  }
+  .button {
+    display: flex;
+  }
+}
+
+

@@ -1,0 +1,36 @@
+@import "../../../access/Scss/mixins";
+
+.profile {
+  @include containerProfile;
+
+  .profileData {
+    width: 20%;
+    border-bottom-left-radius: 15px;
+    border-top-left-radius: 15px;
+    background: #ececf9;
+
+    .sliderPack {
+      display: flex;
+      padding: 20px;
+
+      .pack {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        width: 100px;
+        color: #888;
+        background: white;
+        border-radius: 3px;
+      }
+
+      .active {
+        background-color: #9890C7;
+      }
+    }
+  }
+
+  .profileTable {
+
+  }
+}

@@ -3,15 +3,17 @@ import thunk from "redux-thunk";
 import {registerReducers} from "../reducers/registerReducers";
 import {profileReducer} from "../reducers/profileReducer";
 import {authReducer} from "../reducers/authReducer";
-import {cardReducer} from "../reducers/cardReducer";
+import {packsReducer} from "../reducers/packsReducer";
 import {TypedUseSelectorHook, useSelector} from "react-redux";
+import { cardsReducer } from "../reducers/cardsReducer";
 
 
 export const rootReducer = combineReducers({
     register: registerReducers,
     profile: profileReducer,
     auth: authReducer,
-    card: cardReducer
+    pack: packsReducer,
+    card: cardsReducer
 })
 
 export const store = createStore(rootReducer, applyMiddleware(thunk))

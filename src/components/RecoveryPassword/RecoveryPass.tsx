@@ -1,6 +1,6 @@
 import React, {ChangeEvent, useState} from 'react';
-import style from '../style/RecoveryPass.module.css';
-import {cardsApi} from "../CardsApi/Api";
+import style from '../../style/RecoveryPass.module.css';
+import {cardsApi} from "../../CardsApi/Api";
 import {useNavigate} from "react-router-dom";
 
 
