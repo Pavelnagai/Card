@@ -9,7 +9,7 @@ type ModalWindowType = {
     titleButton: string
     content: any
     callbackButton: (name: string) => void
-    value: string
+    value?: string
 }
 
 const ModalWindow = (props: ModalWindowType) => {
@@ -17,13 +17,16 @@ const ModalWindow = (props: ModalWindowType) => {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const add = () => {
-        props.callbackButton(props.value)
+        if (props.value) {
+            props.callbackButton(props.value)
+        }
         handleClose()
     }
 
     return (
         <div>
-            <Button className={style.buttonSave} color='primary' variant={'contained'}
+            <Button className={props.title === "Delete" ? "buttonDelete" : style.buttonSave} color='primary'
+                    variant={'contained'}
                     onClick={handleOpen}>{props.title}</Button>
             <Modal
                 open={open}

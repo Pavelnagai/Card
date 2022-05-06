@@ -3,16 +3,16 @@ import {AddCardsType, GetCardsType} from "./Api";
 
 
 export const CardAPI = {
-    getCards(params?: GetCardsType) {
+    getPacks(params?: GetCardsType) {
         return instance.get('/cards/pack', {params})
     },
-    addCards(data: AddCardsType) {
+    addPack(data: AddCardsType) {
         return instance.post('/cards/pack', data)
     },
     deletePack(id: any) {
         return instance.delete('/cards/pack', {params: {id}})
     },
-    getCard(params?: GetCardType) {
+    getCards(params?: GetCardType) {
         return instance.get<GetCardRequestType>('/cards/card', {params})
     },
     addCard(data: AddCardResponseType) {

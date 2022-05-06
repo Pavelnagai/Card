@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {Outlet, useNavigate} from "react-router-dom";
 import './Layout.scss'
 import PersonIcon from '@mui/icons-material/Person';
@@ -9,12 +9,14 @@ export const Layout = () => {
     const navigate = useNavigate()
     const onClickPackList = () => {
         setActive(true)
-        navigate(`/main/${active}`)
     }
     const onClickProfile = () => {
         setActive(false)
-        navigate(`/main/${active}`)
     }
+    useEffect(() => {
+            navigate(`/main/${active}`)
+        },
+        [active])
     return (
         <div className="layout">
             <span>Cards-Packs</span>

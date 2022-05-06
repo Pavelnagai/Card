@@ -1,27 +1,6 @@
 import {Dispatch} from "redux";
 import {AddCardResponseType, CardAPI, GetCardRequestType, GetCardType, RequestAddType} from "../../CardsApi/CardAPI";
 
-// export type InitialStateType = typeof initialStateCards
-// const initialStateCards = {
-//     cards: [{
-//         answer: " ",
-//         question: " ",
-//         cardsPack_id: " ",
-//         grade: 0,
-//         shots: 0,
-//         user_id: " ",
-//         created: " ",
-//         updated: " ",
-//         _id: " ",
-//     }],
-//     cardsTotalCount: 6,
-//     maxGrade: 7,
-//     minGrade: 0,
-//     page: 1,
-//     pageCount: 7,
-//     packUserId: " ",
-// }
-
 const InitialState = {
     cards: [] as ResponseCardType[],
     cardsTotalCount: 2,
@@ -96,7 +75,7 @@ const deleteCardAC = (id: string) => ({
 } as const)
 export const getCard = (param?: GetCardType) => async (dispatch: Dispatch) => {
     try {
-        const res = await CardAPI.getCard(param)
+        const res = await CardAPI.getCards(param)
         dispatch(getCardAC(res.data))
     } catch (e) {
         console.log('Get_Card')

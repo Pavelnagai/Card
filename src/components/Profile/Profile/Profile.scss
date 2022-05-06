@@ -2,6 +2,7 @@
 
 .profile {
   @include containerProfile;
+  //margin: auto;
 
   .profileData {
     width: 20%;

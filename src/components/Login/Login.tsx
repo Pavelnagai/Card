@@ -9,7 +9,7 @@ import Button from "../Button/Button";
 
 
 const Login = () => {
-    const auth = useSelector<any, rootReducerType>(state => state.auth.isAuth);
+    const auth = useSelector<rootReducerType, boolean>(state => state.auth.isAuth);
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const redirectOnSingUp = () => {

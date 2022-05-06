@@ -70,7 +70,7 @@ type ActionType = GetCardsTypeAC
 
 export const getPacks = (data: GetCardsType) => async (dispatch: Dispatch) => {
     try {
-        const res = await CardAPI.getCards(data)
+        const res = await CardAPI.getPacks(data)
         dispatch(getCardsAC(res.data))
     } catch (e) {
 
@@ -79,7 +79,7 @@ export const getPacks = (data: GetCardsType) => async (dispatch: Dispatch) => {
 
 export const addPacksTC = (data: AddCardsType) => async (dispatch: any) => {
     try {
-        const res = await CardAPI.addCards(data)
+        const res = await CardAPI.addPack(data)
         dispatch(getPacks({}))
     } catch (e) {
 

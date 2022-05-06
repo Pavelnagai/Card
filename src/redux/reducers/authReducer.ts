@@ -1,4 +1,3 @@
-import {cardsApi} from '../../CardsApi/Api';
 import {Dispatch} from 'redux';
 import {authApi, LoginParamsType} from "../../CardsApi/LoginAPI";
 import {CardAPI} from "../../CardsApi/CardAPI";

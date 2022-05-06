@@ -1,14 +1,14 @@
 import React, {useState} from 'react'
 import "./Profile.scss"
-import CustomizedTables from "../../TablesNew/TableMui";
+import CustomizedTables from "../Tables/TablesNew/TableMui";
 import Search from "../../Search/Search";
 import ProfileAvatar from "./ProfileAvatar/ProfileAvatar";
 import DoubleSlider from "../../Slider/Slider";
-import {useAppSelector} from "../../../redux/store/store";
-import {useDispatch} from "react-redux";
+import {rootReducerType, useAppSelector} from "../../../redux/store/store";
+import {useDispatch, useSelector} from "react-redux";
 import {addPacksTC} from "../../../redux/reducers/packsReducer";
 import ModalWindow from "../../Modal/Modal";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {TextField} from "@mui/material";
 import {TextFieldsOutlined} from "@mui/icons-material";
 
@@ -29,6 +29,7 @@ const Profile = () => {
     }
     const addCard = (name: string) => {
         dispatch(addPacksTC({cardsPack: {name}}))
+        setValue("")
     }
     return (
         <div className="profile">
@@ -52,8 +53,16 @@ const Profile = () => {
                         title="Add Card"
                         titleButton={"Save"}
                         content={<div style={{display: "flex", flexDirection: 'column'}}>
-                            <span>Name pack</span>
-                            <input style={{border: "none", borderBottom: "1px solid #b5b5e1"}} type="text"/>
+                            <TextField
+                                id="standard-multiline-flexible"
+                                label="Name pack"
+                                multiline
+                                maxRows={4}
+                                value={value}
+                                onChange={onChange}
+                                variant="standard"
+                            />
+                            {/*<input style={{border: "none", borderBottom: "1px solid #b5b5e1"}} type="text"/>*/}
                         </div>}
                         callbackButton={addCard}
                         value={value}

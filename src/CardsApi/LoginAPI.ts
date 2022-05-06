@@ -2,17 +2,17 @@ import {instance} from "./instance";
 
 export const authApi = {
     login(data: LoginParamsType) {
-        return instance.post<RequestType>('auth/login', data)
+        return instance.post<ResponseType>('auth/login', data)
     },
     me(){
-      return instance.post<RequestType>('/auth/me')
+      return instance.post<ResponseType>('/auth/me')
     },
     logOut() {
-        return instance.delete<RequestType>('/auth/me')
+        return instance.delete<ResponseType>('/auth/me')
     },
 }
 
-type RequestType = {
+export type ResponseType = {
     avatar: string
     created: string
     email: string
