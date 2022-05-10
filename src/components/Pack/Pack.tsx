@@ -9,7 +9,7 @@ import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import TableCell from "@mui/material/TableCell";
+import TableCell, {tableCellClasses} from "@mui/material/TableCell";
 import TableBody from "@mui/material/TableBody";
 import {useParams} from "react-router-dom";
 import Paginat from "../Pagination/Pagination";
@@ -17,11 +17,28 @@ import style from "./Pack.module.scss";
 import {rootReducerType} from "../../redux/store/store";
 import ModalWindow from "../Modal/Modal";
 import {TextField} from "@mui/material";
+import {styled} from "@mui/material/styles";
 
 type QuizParams = {
     id: string;
     userId: string
 };
+const StyledTableCell = styled(TableCell)(({theme}) => ({
+    [`&.${tableCellClasses.head}`]: {
+        backgroundColor: "#ECECF9",
+    },
+    [`&.${tableCellClasses.body}`]: {
+        fontSize: 14,
+    },
+}));
+const StyledTableRow = styled(TableRow)(({theme}) => ({
+    '&:nth-of-type(2n)': {
+        backgroundColor: "#F8F7FD",
+    },
+    '&:last-child td, &:last-child th': {
+        border: 0,
+    },
+}));
 
 const Pack = () => {
     const [question, setQuestion] = useState<string>('')
@@ -54,8 +71,7 @@ const Pack = () => {
             <h2><ArrowBackIcon/>Pack Name </h2>
             <div className={style.search}>
                 <CustomizedInputBase/>
-                {/*<Button variant={"contained"} onClick={onClickAddCard}>Add Card</Button>*/}
-                <ModalWindow
+                {myId === userId && <ModalWindow
                     title="Add Card"
                     titleButton={"Save"}
                     content={<div style={{display: "flex", flexDirection: 'column'}}>
@@ -77,30 +93,29 @@ const Pack = () => {
                             onChange={onChangeAnswer}
                             variant="standard"
                         />
-                        {/*<input style={{border: "none", borderBottom: "1px solid #b5b5e1"}} type="text"/>*/}
                     </div>}
-                    // callbackButton={onClickAddCard}
                     callbackAnswerAndQuestion={onClickAddCard}
                     value={question}
                     value2={answer}
                 />
+                }
             </div>
             <div className={style.containerContent}>
                 {cards.length > 0 && <div className={style.table}>
                     <TableContainer component={Paper}>
                         <Table aria-label="simple table">
                             <TableHead>
-                                <TableRow style={{background: '#888'}}>
-                                    <TableCell>Question</TableCell>
-                                    <TableCell align="right">Answer</TableCell>
-                                    <TableCell align="right">Last Update</TableCell>
-                                    <TableCell align="right">Grade</TableCell>
-                                    {myId === userId && <TableCell align="right">Grade</TableCell>}
+                                <TableRow style={{background: "#ECECF9", }}>
+                                    <StyledTableCell>Question</StyledTableCell>
+                                    <StyledTableCell align="right">Answer</StyledTableCell>
+                                    <StyledTableCell align="right">Last Update</StyledTableCell>
+                                    <StyledTableCell align="right">Grade</StyledTableCell>
+                                    {myId === userId && <StyledTableCell align="right">Actions</StyledTableCell>}
                                 </TableRow>
                             </TableHead>
                             <TableBody>
                                 {cards.map((row) => (
-                                    <TableRow
+                                    <StyledTableRow
                                         key={row._id}
                                         sx={{'&:last-child td, &:last-child th': {border: 0}}}
                                     >
@@ -110,10 +125,11 @@ const Pack = () => {
                                             align="right">{new Date(row.created).toLocaleDateString().replaceAll("/", ".")}</TableCell>
                                         <TableCell align="right">{row.grade}</TableCell>
                                         {myId === userId && <TableCell align="right">
-                                            <button onClick={()=>deleteCard(row._id)}>Delete</button>
-                                            <button>Edit</button>
+                                            <Button sx={{background: "#F1453D"}} variant={'contained'}
+                                                    onClick={() => deleteCard(row._id)}>Delete</Button>
+                                            <Button sx={{marginLeft: "10px", background: "#21268F"}} variant={'contained'}>Edit</Button>
                                         </TableCell>}
-                                    </TableRow>
+                                    </StyledTableRow>
                                 ))}
                             </TableBody>
                         </Table>

@@ -19,8 +19,7 @@ import Button from '@mui/material/Button/Button';
 
 const StyledTableCell = styled(TableCell)(({theme}) => ({
     [`&.${tableCellClasses.head}`]: {
-        backgroundColor: theme.palette.common.black,
-        color: theme.palette.common.white,
+        backgroundColor: "#ECECF9",
     },
     [`&.${tableCellClasses.body}`]: {
         fontSize: 14,
@@ -28,8 +27,8 @@ const StyledTableCell = styled(TableCell)(({theme}) => ({
 }));
 
 const StyledTableRow = styled(TableRow)(({theme}) => ({
-    '&:nth-of-type(odd)': {
-        backgroundColor: theme.palette.action.hover,
+    '&:nth-of-type(2n)': {
+        backgroundColor: "#F8F7FD",
     },
     '&:last-child td, &:last-child th': {
         border: 0,
@@ -64,7 +63,7 @@ export default function CustomizedTables(props: TableType) {
             <TableContainer component={Paper}>
                 <Table aria-label="customized table">
                     <TableHead>
-                        <TableRow>
+                        <TableRow className={"th"}>
                             <StyledTableCell>Name</StyledTableCell>
                             <StyledTableCell align="right">Cards</StyledTableCell>
                             <StyledTableCell align="right">Last Update</StyledTableCell>

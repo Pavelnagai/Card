@@ -8,7 +8,6 @@ import Profile from "./components/Profile/Profile/Profile";
 import RecoveryPass from "./components/RecoveryPassword/RecoveryPass";
 import SingUp from "./components/SingUp/SingUp";
 import ProfileInformation from "./components/Profile/ProfileInformation/ProfileInformation";
-import CircularProgress from "@mui/material/CircularProgress/CircularProgress";
 import {useDispatch} from "react-redux";
 import {useAppSelector} from "./redux/store/store";
 import {fetchUser} from "./redux/reducers/profileReducer";
