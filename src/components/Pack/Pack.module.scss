@@ -15,6 +15,7 @@
   .containerContent {
     display: flex;
     justify-content: center;
+
     .table {
       display: flex;
       flex-direction: column;
@@ -22,6 +23,7 @@
       //align-items: flex-start;
       width: 95%;
     }
+
     .null {
       margin: 15%;
     }

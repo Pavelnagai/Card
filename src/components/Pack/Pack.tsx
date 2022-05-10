@@ -16,7 +16,7 @@ import Paginat from "../Pagination/Pagination";
 import style from "./Pack.module.scss";
 import {rootReducerType} from "../../redux/store/store";
 import ModalWindow from "../Modal/Modal";
-import {TextField} from "@mui/material";
+import {Rating, TextField} from "@mui/material";
 import {styled} from "@mui/material/styles";
 
 type QuizParams = {
@@ -105,7 +105,7 @@ const Pack = () => {
                     <TableContainer component={Paper}>
                         <Table aria-label="simple table">
                             <TableHead>
-                                <TableRow style={{background: "#ECECF9", }}>
+                                <TableRow style={{background: "#ECECF9",}}>
                                     <StyledTableCell>Question</StyledTableCell>
                                     <StyledTableCell align="right">Answer</StyledTableCell>
                                     <StyledTableCell align="right">Last Update</StyledTableCell>
@@ -117,17 +117,18 @@ const Pack = () => {
                                 {cards.map((row) => (
                                     <StyledTableRow
                                         key={row._id}
-                                        sx={{'&:last-child td, &:last-child th': {border: 0}}}
                                     >
                                         <TableCell component="th" scope="row">{row.question}</TableCell>
                                         <TableCell align="right">{row.answer}</TableCell>
                                         <TableCell
                                             align="right">{new Date(row.created).toLocaleDateString().replaceAll("/", ".")}</TableCell>
-                                        <TableCell align="right">{row.grade}</TableCell>
+                                        <TableCell align="right"><Rating name="half-rating-read" value={row.rating}
+                                                                         precision={0.5} readOnly/></TableCell>
                                         {myId === userId && <TableCell align="right">
                                             <Button sx={{background: "#F1453D"}} variant={'contained'}
                                                     onClick={() => deleteCard(row._id)}>Delete</Button>
-                                            <Button sx={{marginLeft: "10px", background: "#21268F"}} variant={'contained'}>Edit</Button>
+                                            <Button sx={{marginLeft: "10px", background: "#21268F"}}
+                                                    variant={'contained'}>Edit</Button>
                                         </TableCell>}
                                     </StyledTableRow>
                                 ))}

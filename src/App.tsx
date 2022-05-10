@@ -31,29 +31,26 @@ function App() {
         }
     }, [auth])
     useEffect(() => {
-        if (auth){
+        if (auth) {
             dispatch(isInitializedTC())
         }
     }, [])
-    // if (!isInitialized) {
-    //     return <CircularProgress/>
-    // }
     return (
         <div className="App">
             {auth && <Layout/>}
-                <Routes>
-                    <Route index element={<Login/>}/>
-                    <Route path={'/main/:active'} element={<Profile/>}/>
-                    <Route path={'/create-pass/:token'} element={<CreateNewPass/>}/>
-                    <Route path={'/error'} element={<Error/>}/>
-                    <Route path={'/login'} element={<Login/>}/>
-                    <Route path={'/recovery-pass'} element={<RecoveryPass/>}/>
-                    <Route path={'/sing-up'} element={<SingUp/>}/>
-                    <Route path={'/profile/information'} element={<ProfileInformation/>}/>
-                    <Route path={'/profile/edit'} element={<EditCard/>}/>
-                    <Route path={'/profile/pack/:id/:userId'} element={<Pack/>}/>
-                    <Route path={'/*'} element={<Navigate to={'error'}/>}/>
-                </Routes>
+            <Routes>
+                <Route index element={<Login/>}/>
+                <Route path={'/main/:active'} element={<Profile/>}/>
+                <Route path={'/create-pass/:token'} element={<CreateNewPass/>}/>
+                <Route path={'/error'} element={<Error/>}/>
+                <Route path={'/login'} element={<Login/>}/>
+                <Route path={'/recovery-pass'} element={<RecoveryPass/>}/>
+                <Route path={'/sing-up'} element={<SingUp/>}/>
+                <Route path={'/profile/information'} element={<ProfileInformation/>}/>
+                <Route path={'/profile/edit'} element={<EditCard/>}/>
+                <Route path={'/profile/pack/:id/:userId'} element={<Pack/>}/>
+                <Route path={'/*'} element={<Navigate to={'error'}/>}/>
+            </Routes>
         </div>
     );
 }

@@ -3,7 +3,7 @@ import React, {ChangeEvent, useState} from 'react';
 import './Pagination.scss';
 import {useDispatch} from "react-redux";
 import {getPacks} from "../../redux/reducers/packsReducer";
-import {Box, createMuiTheme, ThemeProvider} from "@mui/material";
+import {Box} from "@mui/material";
 
 export type PaginatPropsType = {
     count: number
@@ -24,13 +24,13 @@ const Paginat = (props: PaginatPropsType) => {
     return (
         <div className="pagination">
             <Box sx={{colo: "red"}} color={"red"}>
-            <Pagination
-                count={counter} page={page}
-                onChange={changeNumberPage}
-                siblingCount={3}
-                boundaryCount={2}
-                color={"standard"}
-            />
+                <Pagination
+                    count={counter} page={page}
+                    onChange={changeNumberPage}
+                    siblingCount={3}
+                    boundaryCount={2}
+                    color={"standard"}
+                />
             </Box>
 
             <span>

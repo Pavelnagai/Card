@@ -92,7 +92,8 @@ export default function CustomizedTables(props: TableType) {
                                                     callbackButton={() => {
                                                         deleteCard(el._id)
                                                     }}/>
-                                                <Button sx={{marginLeft: '10px', background: "#21268F"}} variant={"contained"}
+                                                <Button sx={{marginLeft: '10px', background: "#21268F"}}
+                                                        variant={"contained"}
                                                         onClick={() => navigate(`/profile/pack/${el._id}/${el.user_id}`)}>Edit</Button>
                                             </>
                                         }
