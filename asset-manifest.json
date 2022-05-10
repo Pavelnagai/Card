@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/Pavelnagai/Card.git/static/css/main.e8f246eb.css",
-    "main.js": "/Pavelnagai/Card.git/static/js/main.d8063996.js",
-    "index.html": "/Pavelnagai/Card.git/index.html",
-    "main.e8f246eb.css.map": "/Pavelnagai/Card.git/static/css/main.e8f246eb.css.map",
-    "main.d8063996.js.map": "/Pavelnagai/Card.git/static/js/main.d8063996.js.map"
+    "main.css": "/Card/static/css/main.e8f246eb.css",
+    "main.js": "/Card/static/js/main.d8063996.js",
+    "index.html": "/Card/index.html",
+    "main.e8f246eb.css.map": "/Card/static/css/main.e8f246eb.css.map",
+    "main.d8063996.js.map": "/Card/static/js/main.d8063996.js.map"
   },
   "entrypoints": [
     "static/css/main.e8f246eb.css",
