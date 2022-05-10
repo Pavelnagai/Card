@@ -13,7 +13,7 @@ type ButtonTestType = DefaultButtonPropsType & {
 const Button = ({name, disabled, callback, ...restProps}: ButtonTestType) => {
     return (
         <div className={style.buttonContainer}>
-            <button style={disabled ? {backgroundColor: "gray"} : {backgroundColor: "", cursor: 'pointer'}}
+            <button  style={disabled ? {backgroundColor: "gray"} : {backgroundColor: "", cursor: 'pointer'} }
                     onClick={callback}>
                 {name ?? 'Button'}
             </button>

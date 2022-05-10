@@ -91,7 +91,7 @@ export const addCard = (data: AddCardResponseType) => async (dispatch: Dispatch)
     }
 }
 
-export const deleteCard = (id: string) => async (dispatch: Dispatch) => {
+export const deleteCardTC = (id: string) => async (dispatch: any) => {
     try {
         const res = await CardAPI.deleteCard(id)
         dispatch(deleteCardAC(id))

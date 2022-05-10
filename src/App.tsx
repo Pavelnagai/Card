@@ -32,11 +32,13 @@ function App() {
         }
     }, [auth])
     useEffect(() => {
-        dispatch(isInitializedTC())
+        if (auth){
+            dispatch(isInitializedTC())
+        }
     }, [])
-    if (!isInitialized) {
-        return <CircularProgress/>
-    }
+    // if (!isInitialized) {
+    //     return <CircularProgress/>
+    // }
     return (
         <div className="App">
             {auth && <Layout/>}

@@ -6,9 +6,9 @@
 
   .profileData {
     width: 20%;
-    border-bottom-left-radius: 15px;
-    border-top-left-radius: 15px;
-    background: #ececf9;
+    border-bottom-left-radius: 8px;
+    border-top-left-radius: 8px;
+    background: #ECECF9;
 
     .sliderPack {
       display: flex;
@@ -20,13 +20,14 @@
         align-items: center;
         padding: 20px;
         width: 100px;
-        color: #888;
-        background: white;
+        color: #2D2E46;
+        background: #FFFFFF;
         border-radius: 3px;
       }
 
       .active {
-        background-color: #9890C7;
+        background-color: #9A91C8;
+        color: #FFFFFF;
       }
     }
   }

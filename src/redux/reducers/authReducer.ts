@@ -1,6 +1,8 @@
 import {Dispatch} from 'redux';
 import {authApi, LoginParamsType} from "../../CardsApi/LoginAPI";
 import {CardAPI} from "../../CardsApi/CardAPI";
+import {log} from "util";
+import {cardsApi} from "../../CardsApi/Api";
 
 type InitialStateType = typeof initialState
 const initialState = {
@@ -67,7 +69,12 @@ export const authLogOut = () => (dispatch: Dispatch) => {
 
 export const isInitializedTC = () => async (dispatch: Dispatch) => {
     try {
-        const res = await CardAPI.getCards()
+        const res = await authApi.me().then(() => {
+            const res = CardAPI.getPacks().then(() => {
+                    const res = CardAPI.getCards()
+                })
+        })
+
     } catch (e) {
 
     } finally {

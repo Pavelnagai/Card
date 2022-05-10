@@ -22,6 +22,7 @@ const DoubleSlider = () => {
         <div className={style.slider}>
             <Box>
                 <Slider
+                    sx={{color: "#21268F",}}
                     getAriaLabel={() => 'Temperature range'}
                     value={value}
                     max={maxCardsCount}

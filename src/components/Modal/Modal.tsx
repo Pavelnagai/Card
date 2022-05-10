@@ -3,13 +3,16 @@ import Modal from '@mui/material/Modal/Modal';
 import React, {useState} from 'react';
 import Button from "@mui/material/Button/Button";
 import style from "./Modal.module.scss";
+import "../../access/Scss/variable.scss"
 
 type ModalWindowType = {
     title: string
     titleButton: string
     content: any
-    callbackButton: (name: string) => void
+    callbackButton?: (name: string) => void
     value?: string
+    callbackAnswerAndQuestion?: (question: string, answer: string) => void
+    value2?: string
 }
 
 const ModalWindow = (props: ModalWindowType) => {
@@ -17,15 +20,19 @@ const ModalWindow = (props: ModalWindowType) => {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const add = () => {
-        if (props.value) {
+        if (props.callbackButton&&props.value) {
             props.callbackButton(props.value)
+        }else if (props.callbackAnswerAndQuestion){
+            if(props.value && props.value2){
+                props.callbackAnswerAndQuestion(props.value, props.value2)
+            }
         }
         handleClose()
     }
 
     return (
         <div>
-            <Button className={props.title === "Delete" ? "buttonDelete" : style.buttonSave} color='primary'
+            <Button sx={{background: props.title=== "Delete" ?"#F1453D" : "#21268F"}} className={props.title === "Delete" ? "buttonDelete" : style.buttonSave}
                     variant={'contained'}
                     onClick={handleOpen}>{props.title}</Button>
             <Modal

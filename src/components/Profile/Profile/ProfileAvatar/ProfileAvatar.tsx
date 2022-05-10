@@ -11,7 +11,7 @@ const ProfileAvatar = () => {
             <img src={profile.avatar} alt="avatar"/>
             {profile.name}
             <div>Front-end developer</div>
-            <NavLink style={{textDecoration: 'none'}} to={`/profile/information/`}><Button variant={'outlined'}>Edit
+            <NavLink style={{textDecoration: 'none'}} to={`/profile/information/`}><Button sx={{color: "#21268F", border: "1px solid #21268F"}}variant={'outlined'}>Edit
                 profile</Button></NavLink>
         </div>
     );
