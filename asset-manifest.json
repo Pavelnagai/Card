@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/cards-nya/static/css/main.23cc4ada.css",
-    "main.js": "/cards-nya/static/js/main.9a52b6bc.js",
-    "index.html": "/cards-nya/index.html",
-    "main.23cc4ada.css.map": "/cards-nya/static/css/main.23cc4ada.css.map",
-    "main.9a52b6bc.js.map": "/cards-nya/static/js/main.9a52b6bc.js.map"
+    "main.css": "/Pavelnagai/Card.git/static/css/main.e8f246eb.css",
+    "main.js": "/Pavelnagai/Card.git/static/js/main.d8063996.js",
+    "index.html": "/Pavelnagai/Card.git/index.html",
+    "main.e8f246eb.css.map": "/Pavelnagai/Card.git/static/css/main.e8f246eb.css.map",
+    "main.d8063996.js.map": "/Pavelnagai/Card.git/static/js/main.d8063996.js.map"
   },
   "entrypoints": [
-    "static/css/main.23cc4ada.css",
-    "static/js/main.9a52b6bc.js"
+    "static/css/main.e8f246eb.css",
+    "static/js/main.d8063996.js"
   ]
 }
